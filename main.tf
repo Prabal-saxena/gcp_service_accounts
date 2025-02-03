@@ -13,7 +13,7 @@ resource "google_service_account_key" "gke_sa_key" {
 resource "google_storage_bucket_object" "service_account_key" {
   name   = "service_account_key.json"  # File name to store the credentials in GCS
   bucket = "onlineliquorservices_bucket"    # Your GCS bucket name
-  source = google_service_account_key.gke_sa_key.private_key_path  # Path to the generated key
+  source = google_service_account_key.gke_sa_key.private_key  # Path to the generated key
 }
 
 terraform {
