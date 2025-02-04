@@ -11,8 +11,8 @@ resource "google_service_account_key" "gke_sa_key" {
 }
 
 resource "local_file" "service_account_key_file" {
-  content  = base64decode(google_service_account_key.gke_sa_key.private_key)
-  filename = "${path.module}/service_account_key.json"
+  content  = base64encode(google_service_account_key.gke_sa_key.private_key)
+  filename = "${path.module}/terraform/serviceaccount/service_account_key.json"
 }
 
 # Upload the local file to GCS
