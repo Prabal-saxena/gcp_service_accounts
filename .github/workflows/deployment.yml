@@ -37,12 +37,6 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
-#      # Approval for Apply
-#      - name: Wait for manual approval
-#        uses: hmarr/auto-approve-action@v3 # Auto-approves PR if conditions met
-#        with:
-#          github-token: ${{ secrets.GITHUB_TOKEN }}
-
       # Terraform Apply (Deploy Changes) - Requires push confirmation
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
