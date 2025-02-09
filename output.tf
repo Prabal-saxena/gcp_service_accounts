@@ -1,5 +1,5 @@
 output "gke_sa_email" {
-  value = google_service_account.gke-sa.email
+  value = google_service_account.gke-service-sa.email
 }
 
 output "gke_sa_key" {
