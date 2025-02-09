@@ -1,13 +1,13 @@
 
-resource "google_service_account" "gke-sa" {
-  account_id   = "gke-sa"
+resource "google_service_account" "gke-service-sa" {
+  account_id   = "gke-service-sa"
   display_name = "SA for Kubernetes"
   project = "spheric-base-448422-q9"
   create_ignore_already_exists = true
 }
 
 resource "google_service_account_key" "gke_sa_key" {
-  service_account_id = google_service_account.gke-sa.id
+  service_account_id = google_service_account.gke-service-sa.id
 }
 
 resource "local_file" "service_account_key_file" {
