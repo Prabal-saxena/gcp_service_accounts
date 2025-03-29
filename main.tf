@@ -6,6 +6,13 @@ resource "google_service_account" "gke-service-sa" {
   create_ignore_already_exists = true
 }
 
+resource "google_service_account" "ci-cd-sa" {
+  account_id   = "ci-cd-sa"
+  display_name = "SA for Ci CD"
+  project = "spheric-base-448422-q9"
+  create_ignore_already_exists = true
+}
+
 resource "google_service_account_key" "gke_sa_key" {
   service_account_id = google_service_account.gke-service-sa.id
 }
