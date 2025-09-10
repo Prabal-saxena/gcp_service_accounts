@@ -2,14 +2,14 @@
 resource "google_service_account" "gke-service-sa" {
   account_id   = "gke-service-sa"
   display_name = "SA for Kubernetes"
-  project = "spheric-base-448422-q9"
+  project = "noble-linker-471623-s6"
   create_ignore_already_exists = true
 }
 
 resource "google_service_account" "ci-cd-sa" {
   account_id   = "ci-cd-sa"
   display_name = "SA for Ci CD"
-  project = "spheric-base-448422-q9"
+  project = "noble-linker-471623-s6"
   create_ignore_already_exists = true
 }
 
