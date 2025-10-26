@@ -34,6 +34,13 @@ resource "google_service_account" "ecom-helm-sa" {
   create_ignore_already_exists = true
 }
 
+resource "google_service_account" "sql-proxy-sa" {
+  account_id   = "sql-proxy-sa"
+  display_name = "SA for pgsql proxy"
+  project = "noble-linker-471623-s6"
+  create_ignore_already_exists = true
+}
+
 terraform {
   backend "gcs" {
     bucket  = "onlineliquorservices_bucket"
