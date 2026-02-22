@@ -43,7 +43,7 @@ resource "google_service_account" "sql-proxy-sa" {
 
 terraform {
   backend "gcs" {
-    bucket  = "onlineliquorservices_bucket"
+    bucket  = "onlineliquorservicesbucket"
     prefix  = "terraform/serviceaccount/tfstate"
   }
 }
