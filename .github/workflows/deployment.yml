@@ -11,27 +11,28 @@ jobs:
     name: "Terraform Plan & Apply"
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     steps:
       # Checkout repository
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Setup Terraform
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          credentials_json: ${{ secrets.TERRAFORM_GITHUB_SA_SECRET }}
-
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.TERRAFORM_GITHUB_SA_SECRET }}
+          workload_identity_provider: 'projects/536595769394/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+          service_account: 'terraform-github-sa-secret@project-3fd94e98-1d48-43cd-8c1.iam.gserviceaccount.com'
+
+      # Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
       # Initialize Terraform
       - name: Terraform Init
-        run: |
-          terraform init \
-            -backend-config="credentials=${GOOGLE_APPLICATION_CREDENTIALS}"
+        run: terraform init
 
       # Plan Terraform (check for changes)
       - name: Terraform Plan
